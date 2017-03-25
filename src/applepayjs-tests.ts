@@ -197,16 +197,18 @@ describe("ApplePayPaymentRequest", () => {
         };
 
         paymentRequest.billingContact = {
-            emailAddress: "person@domain.com",
-            familyName: "Smith",
-            givenName: "John",
-            phoneNumber: "07777 777 777",
-            addressLines: [""],
-            locality: "London",
-            administrativeArea: "",
-            postalCode: "SW1A 1AA",
-            country: "United Kingdom",
-            countryCode: "GB"
+            emailAddress: "ravipatel@example.com",
+            familyName: "Patel",
+            givenName: "Ravi",
+            phoneNumber: "(408) 555-5555",
+            addressLines: [
+                "1 Infinite Loop"
+            ],
+            locality: "Cupertino",
+            administrativeArea: "CA",
+            postalCode: "95014",
+            country: "United States",
+            countryCode: "US"
         };
 
         paymentRequest.lineItems = [
@@ -251,16 +253,18 @@ describe("ApplePayPaymentRequest", () => {
         ];
 
         paymentRequest.shippingContact = {
-            emailAddress: "person@domain.com",
-            familyName: "Smith",
-            givenName: "John",
-            phoneNumber: "07777 777 777",
-            addressLines: [""],
-            locality: "London",
-            administrativeArea: "",
-            postalCode: "SW1A 1AA",
-            country: "United Kingdom",
-            countryCode: "GB"
+            emailAddress: "ravipatel@example.com",
+            familyName: "Patel",
+            givenName: "Ravi",
+            phoneNumber: "(408) 555-5555",
+            addressLines: [
+                "1 Infinite Loop"
+            ],
+            locality: "Cupertino",
+            administrativeArea: "CA",
+            postalCode: "95014",
+            country: "United States",
+            countryCode: "US"
         };
 
         paymentRequest.shippingMethods = [

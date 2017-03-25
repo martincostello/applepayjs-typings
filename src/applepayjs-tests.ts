@@ -1,8 +1,6 @@
 // Copyright (c) Martin Costello, 2017. All rights reserved.
 // Licensed under the Apache 2.0 license. See the LICENSE file in the project root for full license information.
 
-import ApplePaySession = ApplePayJS.ApplePaySession;
-
 declare function describe(desc: string, fn: () => void): void;
 declare function it(desc: string, fn: () => void): void;
 
@@ -82,7 +80,9 @@ describe("ApplePaySession", () => {
         const session = new ApplePaySession(version, paymentRequest);
 
         session.abort();
-        session.completeMerchantValidation({});
+        session.completeMerchantValidation({
+            foo: "bar"
+        });
         session.completePayment(ApplePaySession.STATUS_SUCCESS);
 
         const total = {
@@ -172,12 +172,42 @@ describe("ApplePaySession", () => {
 describe("ApplePayPaymentRequest", () => {
     it("can create a new instance", () => {
 
-        let paymentRequest = new ApplePayJS.ApplePayPaymentRequest();
+        let paymentRequest: ApplePayJS.ApplePayPaymentRequest = {
+            applicationData: "ApplicationData",
+            countryCode: "GB",
+            currencyCode: "GBP",
+            merchantCapabilities: [
+                ApplePayJS.ApplePayMerchantCapability.supports3DS,
+                ApplePayJS.ApplePayMerchantCapability.supportsCredit,
+                ApplePayJS.ApplePayMerchantCapability.supportsDebit
+            ],
+            supportedNetworks: [
+                "amex",
+                "discover",
+                "jcb",
+                "master​Card",
+                "private​Label",
+                "visa"
+            ],
+            total: {
+                label: "Apple",
+                type: 2,
+                amount: "9.99"
+            }
+        };
 
-        paymentRequest.applicationData = "ApplicationData";
-        paymentRequest.billingContact = new ApplePayJS.ApplePayPaymentContact();
-        paymentRequest.countryCode = "GB";
-        paymentRequest.currencyCode = "GBP";
+        paymentRequest.billingContact = {
+            emailAddress: "person@domain.com",
+            familyName: "Smith",
+            givenName: "John",
+            phoneNumber: "07777 777 777",
+            addressLines: [""],
+            locality: "London",
+            administrativeArea: "",
+            postalCode: "SW1A 1AA",
+            country: "United Kingdom",
+            countryCode: "GB"
+        };
 
         paymentRequest.lineItems = [
             {
@@ -194,12 +224,6 @@ describe("ApplePayPaymentRequest", () => {
                 label: "Estimated Tax",
                 amount: "3.06"
             }
-        ];
-
-        paymentRequest.merchantCapabilities = [
-            ApplePayJS.ApplePayMerchantCapability.supports3DS,
-            ApplePayJS.ApplePayMerchantCapability.supportsCredit,
-            ApplePayJS.ApplePayMerchantCapability.supportsDebit
         ];
 
         paymentRequest.requiredBillingContactFields = [
@@ -226,7 +250,18 @@ describe("ApplePayPaymentRequest", () => {
             "email"
         ];
 
-        paymentRequest.shippingContact = new ApplePayJS.ApplePayPaymentContact();
+        paymentRequest.shippingContact = {
+            emailAddress: "person@domain.com",
+            familyName: "Smith",
+            givenName: "John",
+            phoneNumber: "07777 777 777",
+            addressLines: [""],
+            locality: "London",
+            administrativeArea: "",
+            postalCode: "SW1A 1AA",
+            country: "United Kingdom",
+            countryCode: "GB"
+        };
 
         paymentRequest.shippingMethods = [
             {
@@ -243,20 +278,5 @@ describe("ApplePayPaymentRequest", () => {
 
         paymentRequest.shippingType = ApplePayJS.ApplePayShippingType.delivery;
         paymentRequest.shippingType = "storePickup";
-
-        paymentRequest.supportedNetworks = [
-            "amex",
-            "discover",
-            "jcb",
-            "master​Card",
-            "private​Label",
-            "visa"
-        ];
-
-        paymentRequest.total = {
-            label: "Apple",
-            type: 2,
-            amount: "9.99"
-        };
     });
 });

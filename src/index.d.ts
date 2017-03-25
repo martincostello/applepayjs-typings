@@ -1,4 +1,4 @@
-// Type definitions for Apple Pay JS
+// Type definitions for Apple Pay JS 1.0
 // Project: https://developer.apple.com/reference/applepayjs
 // Definitions by: Martin Costello <https://martincostello.com/>
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
@@ -13,93 +13,93 @@ declare class ApplePaySession extends EventTarget {
      * @param version - The version of the ApplePay JS API you are using.
      * @param paymentRequest - An Apple​Pay​Payment​Request object that contains the information that is displayed on the Apple Pay payment sheet.
      */
-    public constructor(version: number, paymentRequest: ApplePayJS.ApplePayPaymentRequest);
+    constructor(version: number, paymentRequest: ApplePayJS.ApplePayPaymentRequest);
 
     /**
      * A callback function that is automatically called when the payment UI is dismissed with an error.
      */
-    public oncancel: (event: ApplePayJS.Event) => void;
+    oncancel: (event: ApplePayJS.Event) => void;
 
     /**
      * A callback function that is automatically called when the user has authorized the Apple Pay payment, typically via TouchID.
      */
-    public onpaymentauthorized: (event: ApplePayJS.ApplePayPaymentAuthorizedEvent) => void;
+    onpaymentauthorized: (event: ApplePayJS.ApplePayPaymentAuthorizedEvent) => void;
 
     /**
      * A callback function that is automatically called when a new payment method is selected.
      */
-    public onpaymentmethodselected: (event: ApplePayJS.ApplePayPaymentMethodSelectedEvent) => void;
+    onpaymentmethodselected: (event: ApplePayJS.ApplePayPaymentMethodSelectedEvent) => void;
 
     /**
      * A callback function that is called when a shipping contact is selected in the payment sheet.
      */
-    public onshippingcontactselected: (event: ApplePayJS.ApplePayShippingContactSelectedEvent) => void;
+    onshippingcontactselected: (event: ApplePayJS.ApplePayShippingContactSelectedEvent) => void;
 
     /**
      * A callback function that is automatically called when a shipping method is selected.
      */
-    public onshippingmethodselected: (event: ApplePayJS.ApplePayShippingMethodSelectedEvent) => void;
+    onshippingmethodselected: (event: ApplePayJS.ApplePayShippingMethodSelectedEvent) => void;
 
     /**
      * A callback function that is automatically called when the payment sheet is displayed.
      */
-    public onvalidatemerchant: (event: ApplePayJS.ApplePayValidateMerchantEvent) => void;
+    onvalidatemerchant: (event: ApplePayJS.ApplePayValidateMerchantEvent) => void;
 
     /**
      * Indicates whether or not the device supports Apple Pay.
      * @returns true if the device supports making payments with Apple Pay; otherwise, false.
      */
-    public static canMakePayments(): boolean;
+    static canMakePayments(): boolean;
 
     /**
      * Indicates whether or not the device supports Apple Pay and if the user has an active card in Wallet.
      * @param merchantIdentifier - The merchant ID received when the merchant enrolled in Apple Pay.
      * @returns true if the device supports Apple Pay and there is at least one active card in Wallet; otherwise, false.
      */
-    public static canMakePaymentsWithActiveCard(merchantIdentifier: string): Promise<boolean>;
+    static canMakePaymentsWithActiveCard(merchantIdentifier: string): Promise<boolean>;
 
     /**
      * Displays the Set up Apple Pay button.
      * @param merchantIdentifier - The merchant ID received when the merchant enrolled in Apple Pay.
      * @returns A boolean value indicating whether setup was successful.
      */
-    public static openPaymentSetup(merchantIdentifier: string): Promise<boolean>;
+    static openPaymentSetup(merchantIdentifier: string): Promise<boolean>;
 
     /**
      * Verifies if a web browser supports a given Apple Pay JS API version.
      * @param version - A number representing the Apple Pay JS API version being checked. The initial version is 1.
      * @returns A boolean value indicating whether the web browser supports the given API version. Returns false if the web browser does not support the specified version.
      */
-    public static supportsVersion(version: number): boolean;
+    static supportsVersion(version: number): boolean;
 
     /**
      * Aborts the current Apple Pay session.
      */
-    public abort(): void;
+    abort(): void;
 
     /**
      * Begins the merchant validation process.
      */
-    public begin(): void;
+    begin(): void;
 
     /**
      * Call after the merchant has been validated.
      * @param merchantSession - An opaque message session object.
      */
-    public completeMerchantValidation(merchantSession: any): void;
+    completeMerchantValidation(merchantSession: any): void;
 
     /**
      * Call when a payment has been authorized.
      * @param status - The status of the payment.
      */
-    public completePayment(status: number): void;
+    completePayment(status: number): void;
 
     /**
      * Call after a payment method has been selected.
      * @param newTotal - An Apple​Pay​Line​Item dictionary representing the total price for the purchase.
      * @param newLineItems - A sequence of Apple​Pay​Line​Item dictionaries.
      */
-    public completePaymentMethodSelection(newTotal: ApplePayJS.ApplePayLineItem, newLineItems: ApplePayJS.ApplePayLineItem[]): void;
+    completePaymentMethodSelection(newTotal: ApplePayJS.ApplePayLineItem, newLineItems: ApplePayJS.ApplePayLineItem[]): void;
 
     /**
      * Call after a shipping contact has been selected.
@@ -108,7 +108,7 @@ declare class ApplePaySession extends EventTarget {
      * @param newTotal - An Apple​Pay​Line​Item dictionary representing the total price for the purchase.
      * @param newLineItems - A sequence of Apple​Pay​Line​Item dictionaries.
      */
-    public completeShippingContactSelection(
+    completeShippingContactSelection(
         status: number,
         newShippingMethods: ApplePayJS.ApplePayShippingMethod[],
         newTotal: ApplePayJS.ApplePayLineItem,
@@ -120,47 +120,47 @@ declare class ApplePaySession extends EventTarget {
      * @param newTotal - An Apple​Pay​Line​Item dictionary representing the total price for the purchase.
      * @param newLineItems - A sequence of Apple​Pay​Line​Item dictionaries.
      */
-    public completeShippingMethodSelection(status: number, newTotal: ApplePayJS.ApplePayLineItem, newLineItems: ApplePayJS.ApplePayLineItem[]): void;
+    completeShippingMethodSelection(status: number, newTotal: ApplePayJS.ApplePayLineItem, newLineItems: ApplePayJS.ApplePayLineItem[]): void;
 
     /**
      * The requested action succeeded.
      */
-    public static readonly STATUS_SUCCESS: number;
+    static readonly STATUS_SUCCESS: number;
 
     /**
      * The requested action failed.
      */
-    public static readonly STATUS_FAILURE: number;
+    static readonly STATUS_FAILURE: number;
 
     /**
      * The billing address is not valid.
      */
-    public static readonly STATUS_INVALID_BILLING_POSTAL_ADDRESS: number;
+    static readonly STATUS_INVALID_BILLING_POSTAL_ADDRESS: number;
 
     /**
      * The shipping address is not valid.
      */
-    public static readonly STATUS_INVALID_SHIPPING_POSTAL_ADDRESS: number;
+    static readonly STATUS_INVALID_SHIPPING_POSTAL_ADDRESS: number;
 
     /**
      * The shipping contact information is not valid.
      */
-    public static readonly STATUS_INVALID_SHIPPING_CONTACT: number;
+    static readonly STATUS_INVALID_SHIPPING_CONTACT: number;
 
     /**
      * The PIN information is not valid. Cards on the China Union Pay network may require a PIN.
      */
-    public static readonly STATUS_PIN_INCORRECT: number;
+    static readonly STATUS_PIN_INCORRECT: number;
 
     /**
      * The maximum number of tries for a PIN has been reached and the user has been locked out. Cards on the China Union Pay network may require a PIN.
      */
-    public static readonly STATUS_PIN_LOCKOUT: number;
+    static readonly STATUS_PIN_LOCKOUT: number;
 
     /**
      * The required PIN information was not provided. Cards on the China Union Pay payment network may require a PIN to authenticate the transaction.
      */
-    public static readonly STATUS_PIN_REQUIRED: number;
+    static readonly STATUS_PIN_REQUIRED: number;
 }
 
 declare namespace ApplePayJS {
@@ -283,7 +283,7 @@ declare namespace ApplePayJS {
         /**
          * The payment token used to authorize a payment.
          */
-        public readonly payment: ApplePayPayment;
+        readonly payment: ApplePayPayment;
     }
 
     /**
@@ -377,7 +377,7 @@ declare namespace ApplePayJS {
         /**
          * The card used to complete a payment.
          */
-        public readonly paymentMethod: ApplePayPaymentMethod;
+        readonly paymentMethod: ApplePayPaymentMethod;
     }
 
     /**
@@ -569,7 +569,7 @@ declare namespace ApplePayJS {
         /**
          * The shipping address selected by the user.
          */
-        public readonly shippingContact: ApplePayPaymentContact;
+        readonly shippingContact: ApplePayPaymentContact;
     }
 
     /**
@@ -606,7 +606,7 @@ declare namespace ApplePayJS {
         /**
          * The shipping method selected by the user.
          */
-        public readonly shippingMethod: ApplePayShippingMethod;
+        readonly shippingMethod: ApplePayShippingMethod;
     }
 
     /**
@@ -636,80 +636,80 @@ declare namespace ApplePayJS {
 
     abstract class Event {
 
-        public readonly bubbles: boolean;
+        readonly bubbles: boolean;
 
-        public cancelBubble: boolean;
+        cancelBubble: boolean;
 
-        public readonly cancelable: boolean;
+        readonly cancelable: boolean;
 
-        public readonly composed: boolean;
+        readonly composed: boolean;
 
-        public readonly currentTarget: EventTarget;
+        readonly currentTarget: EventTarget;
 
-        public readonly defaultPrevented: boolean;
+        readonly defaultPrevented: boolean;
 
-        public readonly eventPhase: number;
+        readonly eventPhase: number;
 
-        public readonly isTrusted: boolean;
+        readonly isTrusted: boolean;
 
-        public returnValue: boolean;
+        returnValue: boolean;
 
-        public readonly srcElement: EventTarget;
+        readonly srcElement: EventTarget;
 
-        public readonly target: EventTarget;
+        readonly target: EventTarget;
 
-        public readonly timeStamp: string;
+        readonly timeStamp: string;
 
-        public readonly type: string;
+        readonly type: string;
 
-        public composedPath(): Node[];
+        composedPath(): Node[];
 
-        public initEvent(type?: string, bubbles?: boolean, cancelable?: boolean): void;
+        initEvent(type?: string, bubbles?: boolean, cancelable?: boolean): void;
 
-        public preventDefault(): void;
+        preventDefault(): void;
 
-        public stopImmediatePropagation(): void;
+        stopImmediatePropagation(): void;
 
-        public stopPropagation(): void;
+        stopPropagation(): void;
 
-        public static readonly AT_TARGET: number;
+        static readonly AT_TARGET: number;
 
-        public static readonly BLUR: number;
+        static readonly BLUR: number;
 
-        public static readonly BUBBLING_PHASE: number;
+        static readonly BUBBLING_PHASE: number;
 
-        public static readonly CAPTURING_PHASE: number;
+        static readonly CAPTURING_PHASE: number;
 
-        public static readonly CHANGE: number;
+        static readonly CHANGE: number;
 
-        public static readonly CLICK: number;
+        static readonly CLICK: number;
 
-        public static readonly DBLCLICK: number;
+        static readonly DBLCLICK: number;
 
-        public static readonly DRAGDROP: number;
+        static readonly DRAGDROP: number;
 
-        public static readonly FOCUS: number;
+        static readonly FOCUS: number;
 
-        public static readonly KEYDOWN: number;
+        static readonly KEYDOWN: number;
 
-        public static readonly KEYPRESS: number;
+        static readonly KEYPRESS: number;
 
-        public static readonly KEYUP: number;
+        static readonly KEYUP: number;
 
-        public static readonly MOUSEDOWN: number;
+        static readonly MOUSEDOWN: number;
 
-        public static readonly MOUSEDRAG: number;
+        static readonly MOUSEDRAG: number;
 
-        public static readonly MOUSEMOVE: number;
+        static readonly MOUSEMOVE: number;
 
-        public static readonly MOUSEOUT: number;
+        static readonly MOUSEOUT: number;
 
-        public static readonly MOUSEOVER: number;
+        static readonly MOUSEOVER: number;
 
-        public static readonly MOUSEUP: number;
+        static readonly MOUSEUP: number;
 
-        public static readonly NONE: number;
+        static readonly NONE: number;
 
-        public static readonly SELECT: number;
+        static readonly SELECT: number;
     }
 }

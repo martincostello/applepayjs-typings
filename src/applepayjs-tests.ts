@@ -87,14 +87,14 @@ describe("ApplePaySession", () => {
 
         const total = {
             label: "Subtotal",
-            type: ApplePayJS.ApplePayLineItemType.final,
+            type: "final",
             amount: "35.00"
         };
 
         const lineItems = [
             {
                 label: "Subtotal",
-                type: ApplePayJS.ApplePayLineItemType.final,
+                type: "final",
                 amount: "35.00"
             },
             {
@@ -177,9 +177,9 @@ describe("ApplePayPaymentRequest", () => {
             countryCode: "GB",
             currencyCode: "GBP",
             merchantCapabilities: [
-                ApplePayJS.ApplePayMerchantCapability.supports3DS,
-                ApplePayJS.ApplePayMerchantCapability.supportsCredit,
-                ApplePayJS.ApplePayMerchantCapability.supportsDebit
+                "supports3DS",
+                "supportsCredit",
+                "supportsDebit"
             ],
             supportedNetworks: [
                 "amex",
@@ -191,7 +191,7 @@ describe("ApplePayPaymentRequest", () => {
             ],
             total: {
                 label: "Apple",
-                type: 2,
+                type: "final",
                 amount: "9.99"
             }
         };
@@ -214,7 +214,7 @@ describe("ApplePayPaymentRequest", () => {
         paymentRequest.lineItems = [
             {
                 label: "Subtotal",
-                type: ApplePayJS.ApplePayLineItemType.final,
+                type: "final",
                 amount: "35.00"
             },
             {
@@ -229,20 +229,8 @@ describe("ApplePayPaymentRequest", () => {
         ];
 
         paymentRequest.requiredBillingContactFields = [
-            ApplePayJS.ApplePayContactField.postalAddress,
-            ApplePayJS.ApplePayContactField.name
-        ];
-
-        paymentRequest.requiredBillingContactFields = [
             "postalAddress",
             "name"
-        ];
-
-        paymentRequest.requiredShippingContactFields = [
-            ApplePayJS.ApplePayContactField.postalAddress,
-            ApplePayJS.ApplePayContactField.name,
-            ApplePayJS.ApplePayContactField.phone,
-            ApplePayJS.ApplePayContactField.email
         ];
 
         paymentRequest.requiredShippingContactFields = [
@@ -280,7 +268,6 @@ describe("ApplePayPaymentRequest", () => {
             }
         ];
 
-        paymentRequest.shippingType = ApplePayJS.ApplePayShippingType.delivery;
         paymentRequest.shippingType = "storePickup";
     });
 });

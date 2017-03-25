@@ -1,0 +1,32 @@
+{
+  "name": "@types/applepayjs",
+  "version": "1.0.0",
+  "private": true,
+  "description": "This package contains type definitions for Apple Pay JS.",
+  "scripts": {
+    "build": "tsc --project ./src/tsconfig.json",
+    "lint": "tslint --config ./src/tslint.custom.json ./src/**/*.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/martincostello/applepayjs-typings.git"
+  },
+  "keywords": [
+    "apple pay",
+    "applepay"
+  ],
+  "author": {
+    "name": "Martin Costello",
+    "url": "https://martincostello.com/"
+  },
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/martincostello/applepayjs-typings/issues"
+  },
+  "homepage": "https://github.com/martincostello/applepayjs-typings#readme",
+  "devDependencies": {
+    "tslint": "4.5.1",
+    "typescript": "2.2.1"
+  }
+}

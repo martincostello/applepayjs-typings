@@ -166,32 +166,6 @@ declare class ApplePaySession extends EventTarget {
 declare namespace ApplePayJS {
 
     /**
-     * Types that indicate a contact field.
-     */
-    enum ApplePayContactField {
-
-        /**
-         * The contact's postal address.
-         */
-        postalAddress,
-
-        /**
-         * The contact's name.
-         */
-        name,
-
-        /**
-         * The contact's telephone number.
-         */
-        phone,
-
-        /**
-         * The contact's email address.
-         */
-        email
-    }
-
-    /**
      * Defines a line item in a payment request - for example, total, tax, discount, or grand total.
      */
     interface ApplePayLineItem {
@@ -209,49 +183,7 @@ declare namespace ApplePayJS {
         /**
          * A value that indicates if the line item is final or pending.
          */
-        type?: ApplePayLineItemType | string;
-    }
-
-    /**
-     * Types that indicate if a line item is final or pending.
-     */
-    enum ApplePayLineItemType {
-
-        /**
-         * A line item representing the known, final cost.
-         */
-        final,
-
-        /**
-         * A line item representing an estimated or unknown cost.
-         */
-        pending
-    }
-
-    /**
-     * Types that represent payment merchant capabilities.
-     */
-    enum ApplePayMerchantCapability {
-
-        /**
-         * 3D Secure transactions are supported. This value is required.
-         */
-        supports3DS,
-
-        /**
-         * Only transactions that are categorized as credit cards are allowed.
-         */
-        supportsCredit,
-
-        /**
-         * Only transactions that are categorized as debit cards are allowed.
-         */
-        supportsDebit,
-
-        /**
-         * China Union Pay transactions are supported.
-         */
-        supportsEMV
+        type?: string;
     }
 
     /**
@@ -361,7 +293,7 @@ declare namespace ApplePayJS {
         /**
          * A value representing the card's type of payment.
          */
-        type: ApplePayPaymentMethodType;
+        type: string;
 
         /**
          * The payment pass object associated with the payment.
@@ -378,32 +310,6 @@ declare namespace ApplePayJS {
          * The card used to complete a payment.
          */
         readonly paymentMethod: ApplePayPaymentMethod;
-    }
-
-    /**
-     * Types that indicate types of payment method.
-     */
-    enum ApplePayPaymentMethodType {
-
-        /**
-         * A debit card.
-         */
-        debit,
-
-        /**
-         * A credit card.
-         */
-        credit,
-
-        /**
-         * A card with pre-paid funds.
-         */
-        prepaid,
-
-        /**
-         * A store card, such as a loyalty card.
-         */
-        store
     }
 
     /**
@@ -434,38 +340,7 @@ declare namespace ApplePayJS {
         /**
          * The activation state of the pass.
          */
-        activationState: ApplePayPaymentPassActivationState;
-    }
-
-    /**
-     * Payment pass activation states.
-     */
-    enum ApplePayPaymentPassActivationState {
-
-        /**
-         * Active and ready to be used for payment.
-         */
-        activated,
-
-        /**
-         * Not active but may be activated by the issuer.
-         */
-        requiresActivation,
-
-        /**
-         * Not ready for use but activation is in progress.
-         */
-        activating,
-
-        /**
-         * Not active and can't be activated.
-         */
-        suspended,
-
-        /**
-         * Not active because the issuer has disabled the account associated with the device.
-         */
-        deactivated
+        activationState: string;
     }
 
     /**
@@ -492,7 +367,7 @@ declare namespace ApplePayJS {
          * The payment capabilities supported by the merchant.
          * The value must at least contain ApplePayMerchantCapability.supports3DS.
          */
-        merchantCapabilities: ApplePayMerchantCapability[] | string[];
+        merchantCapabilities: string[];
 
         /**
          * The payment networks supported by the merchant.
@@ -512,12 +387,12 @@ declare namespace ApplePayJS {
         /**
          * The billing information that you require from the user in order to process the transaction.
          */
-        requiredBillingContactFields?: ApplePayContactField[] | string[];
+        requiredBillingContactFields?: string[];
 
         /**
          * The shipping information that you require from the user in order to fulfill the order.
          */
-        requiredShippingContactFields?: ApplePayContactField[] | string[];
+        requiredShippingContactFields?: string[];
 
         /**
          * Shipping contact information for the user.
@@ -532,7 +407,7 @@ declare namespace ApplePayJS {
         /**
          * How the items are to be shipped.
          */
-        shippingType?: ApplePayShippingType | string;
+        shippingType?: string;
 
         /**
          * Optional user-defined data.
@@ -607,20 +482,6 @@ declare namespace ApplePayJS {
          * The shipping method selected by the user.
          */
         readonly shippingMethod: ApplePayShippingMethod;
-    }
-
-    /**
-     * Types that indicate how a purchase is shipped.
-     */
-    enum ApplePayShippingType {
-
-        shipping,
-
-        delivery,
-
-        storePickup,
-
-        servicePickup
     }
 
     /**

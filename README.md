@@ -1,5 +1,7 @@
 # Apple Pay JS Typings
 
+[![npm](https://img.shields.io/npm/v/@types/applepayjs.svg)](https://www.npmjs.com/package/@types/applepayjs)
+
 [![Build status](https://travis-ci.org/martincostello/applepayjs-typings.svg?branch=master)](https://travis-ci.org/martincostello/applepayjs-typings)
 
 [![Build history](https://buildstats.info/travisci/chart/martincostello/applepayjs-typings?branch=master&includeBuildsFromPullRequest=false)](https://travis-ci.org/martincostello/applepayjs-typings)
@@ -7,6 +9,8 @@
 ## Overview
 
 Type definitions for [Apple Pay JS](https://developer.apple.com/reference/applepayjs/).
+
+These type definitions are published to [npm](https://www.npmjs.com/package/@types/applepayjs) via [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/applepayjs).
 
 ## Feedback
 
@@ -33,3 +37,5 @@ This project is licensed under the [Apache 2.0](http://www.apache.org/licenses/L
 ## External Links
 
   * [Apple Pay JS](https://developer.apple.com/reference/applepayjs)
+  * [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/applepayjs)
+  * [npm](https://www.npmjs.com/package/@types/applepayjs)

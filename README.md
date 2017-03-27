@@ -30,6 +30,18 @@ To install, build and test the typings just run [npm](https://www.npmjs.com/), f
 > npm run lint
 ```
 
+## Installation
+
+To consume the type definitions in TypeScript 2.0, for example, just add [@types/applepayjs](https://www.npmjs.com/package/@types/applepayjs) to your ```package.json``` file:
+
+```json
+{
+  "devDependencies": {
+    "@types/applepayjs": "1.0.0"
+  }
+}
+```
+
 ## License
 
 This project is licensed under the [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt) license.

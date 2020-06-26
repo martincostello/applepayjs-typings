@@ -2,9 +2,9 @@
 
 [![npm](https://img.shields.io/npm/v/@types/applepayjs.svg)](https://www.npmjs.com/package/@types/applepayjs)
 
-[![Build status](https://travis-ci.org/martincostello/applepayjs-typings.svg?branch=master)](https://travis-ci.org/martincostello/applepayjs-typings)
+[![Build status](https://travis-ci.org/martincostello/applepayjs-typings.svg?branch=main)](https://travis-ci.org/martincostello/applepayjs-typings)
 
-[![Build history](https://buildstats.info/travisci/chart/martincostello/applepayjs-typings?branch=master&includeBuildsFromPullRequest=false)](https://travis-ci.org/martincostello/applepayjs-typings)
+[![Build history](https://buildstats.info/travisci/chart/martincostello/applepayjs-typings?branch=main&includeBuildsFromPullRequest=false)](https://travis-ci.org/martincostello/applepayjs-typings)
 
 ## Overview
 
